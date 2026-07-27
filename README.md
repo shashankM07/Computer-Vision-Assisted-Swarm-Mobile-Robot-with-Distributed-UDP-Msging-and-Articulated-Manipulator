@@ -1,26 +1,35 @@
 1. Introduction & Project Architecture
-This project details the engineering phase 1 implementation of a decentralized autonomous swarm robotics system optimized for automated warehouse material handling operations. Modern warehouse management systems typically rely on centralized server frameworks, creating a fatal single point of failure. If the central coordinator fails, the entire automation matrix collapses. This project counteracts that structural limitation by introducing a robust decentralized architecture.
-1.1 Decentralized Swarm Principles
-In this system, individual robotic agents possess localized intelligence and operate without a master controller directing task assignments. The swarm relies on a shared global environment visualization state, allowing each agent to independently perform localization, path estimation, behavioral logic adjustment, and conflict resolution.
+        This project details the engineering phase 1 implementation of a decentralized autonomous swarm robotics system optimized for automated warehouse material handling operations. Modern warehouse management systems typically rely on centralized server frameworks, creating a fatal single point of failure. If the central coordinator fails, the entire automation matrix collapses. This project counteracts that structural limitation by introducing a robust decentralized architecture.
+   
+    1.1 Decentralized Swarm Principles
+        In this system, individual robotic agents possess localized intelligence and operate without a master controller directing task assignments. The swarm relies on a shared global environment visualization state, allowing each agent to independently perform localization, path estimation, behavioral logic adjustment, and conflict resolution.
 Engineering Objective: To deliver a scalable framework where individual units can enter or exit the operational environment dynamically without disrupting ongoing material transport arrays.
-1.2 Structural Data Flow Loop
-The technical pipeline functions across a high-speed closed loop connecting physical spaces to digital mapping canvases:
-•	Global Vision Acquisition: An overhead digital video frame captures physical arena movements.
-•	Digital Twin Synthesis: A PyCharm station running OpenCV extracts ArUco matrix IDs, scaling real spatial markers into explicit metric centimeters.
-•	Decentralized Network Broadcast: The station packs coordinates into a unified JSON string format and fires it via UDP to a network broadcast target.
-•	Edge Computation: An onboard ESP32 microcontroller processes the packet stream, executing spatial trigonometry locally to guide the physical motor chassis.
+
+    1.2 Structural Data Flow Loop
+        The technical pipeline functions across a high-speed closed loop connecting physical spaces to digital mapping canvases:
+    •	Global Vision Acquisition: An overhead digital video frame captures physical arena movements.
+    •	Digital Twin Synthesis: A PyCharm station running OpenCV extracts ArUco matrix IDs, scaling real spatial markers into explicit metric         centimeters.
+    •	Decentralized Network Broadcast: The station packs coordinates into a unified JSON string format and fires it via UDP to a network broadcast target.
+    •	Edge Computation: An onboard ESP32 microcontroller processes the packet stream, executing spatial trigonometry locally to guide the physical motor chassis.
+   
 2. Python Digital Twin & Tracking Dashboard
-The management dashboard forms the visual and calculation core of the indoor localization grid. Operating inside a Python environment using OpenCV, it transforms raw image tracking feeds into calibrated metric data loops.
-2.1 Homography & Real-to-Pixel Coordinate Scaling
-To bridge the physical test track to virtual software frames, the system implements linear spatial transformation metrics. Pixels do not hold true meaning for mechatronic navigation; hence, a conversion constant translates coordinates to physical centimeters based on a defined 120 cm x 120 cm arena dimension.
-Scale Factor Equations:
+        The management dashboard forms the visual and calculation core of the indoor localization grid. Operating inside a Python environment using OpenCV, it transforms raw image tracking feeds into calibrated metric data loops.
+
+   2.1 Homography & Real-to-Pixel Coordinate Scaling
+      To bridge the physical test track to virtual software frames, the system implements linear spatial transformation metrics. Pixels do not hold true meaning for mechatronic navigation; hence, a conversion constant translates coordinates to physical centimeters based on a defined 120 cm x 120 cm arena dimension.
+   
+**Scale Factor Equations:**
 Scale_X = Window_Width / Arena_Width_CM
 Scale_Y = Window_Height / Arena_Height_CM
   
  
-Figure 2.1: Online ArUco Tracking Token Matrices (ID 0 and ID 1)
-2.2 Comprehensive Core Dashboard Engine Script
-The Python code snippet below demonstrates the video scaling canvas configuration, ArUco identification matrix, color-coded tracking dictionaries, and live UDP JSON stream delivery:
+  Figure 2.1: Online ArUco Tracking Token Matrices (ID 0 and ID 1)
+<img width="353" height="424" alt="image" src="https://github.com/user-attachments/assets/7a86e3cc-dad1-474e-a38b-c8ef554df94b" />
+<img width="975" height="606" alt="image" src="https://github.com/user-attachments/assets/21616edd-fe03-4690-b2f1-13b00e3e6c79" />
+
+  2.2 Comprehensive Core Dashboard Engine Script
+      The Python code snippet below demonstrates the video scaling canvas configuration, ArUco identification matrix, color-coded tracking dictionaries, and live UDP JSON stream delivery:
+      
 import cv2
 import cv2.aruco as aruco
 import numpy as np
@@ -96,13 +105,16 @@ while True:
     if cv2.waitKey(1) & 0xFF == ord('q'): break
 cap.release()
 cv2.destroyAllWindows()
-
- 
+<img width="975" height="609" alt="image" src="https://github.com/user-attachments/assets/19ef34a7-a813-457c-beb5-69c32499b6d2" />
  
 Figure 2.2: Live Visual Representation of the Real-Time Metric Swarm Dashboard
+<img width="974" height="608" alt="image" src="https://github.com/user-attachments/assets/6aed1228-f069-47da-a1d2-4fe5b8d33524" />
+
+
 3. Mechanical Design & Structural Body Modeling
 The physical structure of the swarm agent is designed using a multi-tiered platform architecture. This layout systematically isolates heavy electromechanical assemblies from computational logic elements to maintain high operational integrity.
-3.1 Tiered Chassis Topology
+
+  3.1 Tiered Chassis Topology
 The mobile agent's body is divided into two distinct primary layers managed through custom geometric layouts:
 •	Lower Deck (LD): Serves as the structural power platform. It houses the high-current 12V 100RPM DC metal gear motors, heavy-duty differential wheel assemblies, and the core 7.4V Lithium-Ion power source pack.
 •	Upper Deck (UD): Acts as the clean digital acquisition deck. It maintains a completely flat plane layout optimized for hosting the overhead vision ArUco tokens, localized sensor arrays, and the ESP32 microcontroller.
