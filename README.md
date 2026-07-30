@@ -3,7 +3,7 @@
 
   This repository contains the Phase 1 engineering implementation and design dossier for a computer-vision assisted, decentralized autonomous swarm robotics system optimized for automated warehouse material handling.
 
-  Developed by the four-member team Swarmobotics and presented to the Department of Mechatronics Engineering (Continuous Internal Evaluation - Phase 1, May 2026), this project aims to counteract the fatal single point of failure common in centralized warehouse management systems by distributing intelligence across localized agents.
+  Developed by the four-member team Swarmobotics and presented to the Department of Mechatronics Engineering, this project aims to counteract the fatal single point of failure common in centralized warehouse management systems by distributing intelligence across localized agents.
 
 ##**System Architecture**
     The swarm relies on a shared global environment visualization state, enabling independent localization, path estimation, and conflict resolution without a master controller. The data flow loop consists of:
