@@ -19,35 +19,35 @@
 ## **Python Digital Twin & Tracking Dashboard**
   The system's visual and calculation core operates inside a Python environment to transform raw image feeds into calibrated metric data loops.
 
-### **Spatial Transformation**: Bridges the physical track to virtual frames using linear spatial transformation metrics based on a defined 120 cm x 120 cm arena.
+**Spatial Transformation**: Bridges the physical track to virtual frames using linear spatial transformation metrics based on a defined 120 cm x 120 cm arena.
 
-### **Dashboard Features**: The script utilizes color-coded tracking dictionaries (e.g., Green for IDLE, Yellow for BUSY), ArUco identification matrices (DICT_4X4_100), and live UDP JSON stream delivery to the robotic agents.
+**Dashboard Features**: The script utilizes color-coded tracking dictionaries (e.g., Green for IDLE, Yellow for BUSY), ArUco identification matrices (DICT_4X4_100), and live UDP JSON stream delivery to the robotic agents.
 
 ## **Mechanical Design & Structure**
   The mobile agents feature a multi-tiered platform architecture manufactured from high-density lightweight acrylic polymer sheeting, which provides structural rigidity, electrical insulation, and vibration damping.
 
-### **Lower Deck (LD):** The structural power platform housing the 7.4V Lithium-Ion battery, high-current 12V 100RPM DC metal gear motors, and heavy-duty differential wheel assemblies.
+**Lower Deck (LD):** The structural power platform housing the 7.4V Lithium-Ion battery, high-current 12V 100RPM DC metal gear motors, and heavy-duty differential wheel assemblies.
 
-### **Upper Deck (UD):** The digital acquisition deck containing the ESP32 microcontroller, localized sensor arrays, and overhead ArUco tokens.
+**Upper Deck (UD):** The digital acquisition deck containing the ESP32 microcontroller, localized sensor arrays, and overhead ArUco tokens.
 
-### **End-Effector Gripper**: A custom gear-driven scissor linkage claw mechanism at the front of the bot. It is powered by an SG90 servo motor that sweeps from a 180-degree initialization state to a 100-degree mechanical lock to safely grip packages.
+**End-Effector Gripper**: A custom gear-driven scissor linkage claw mechanism at the front of the bot. It is powered by an SG90 servo motor that sweeps from a 180-degree initialization state to a 100-degree mechanical lock to safely grip packages.
 
 ## **Electrical Architecture**
   The electrical control distribution isolates high-frequency data from internal circuit sags using a general-purpose copper perfboard panel.
 
-### **Core Hardware**: Driven by a 30-pin ESP32 DevKit V1 module routed to a dual H-bridge TB6612FNG motor driver.
+**Core Hardware**: Driven by a 30-pin ESP32 DevKit V1 module routed to a dual H-bridge TB6612FNG motor driver.
 
-### **Power Split Rule:**
+**Power Split Rule:**
 
-### **VM (Motor Power):** Tied directly to the unregulated 7.4V battery to handle high inductive current surges from the DC motors.
+**VM (Motor Power):** Tied directly to the unregulated 7.4V battery to handle high inductive current surges from the DC motors.
 
-### **VCC (Logic Power):** Connected to the stable 5V output of the ESP32 onboard regulator to protect processing gates from motor interference.
+**VCC (Logic Power):** Connected to the stable 5V output of the ESP32 onboard regulator to protect processing gates from motor interference.
 
 ## **Firmware & Operational Benchmarks**
   The edge processing firmware is written in C++ and runs locally on each ESP32 unit. The firmware establishes WiFi/UDP connections, deserializes matrix packets, and operates absolute trigonometry functions.
 
-### **During physical evaluations, the system achieved the following performance benchmarks:**
+**During physical evaluations, the system achieved the following performance benchmarks:**
 
-### **Proportional Trajectory Error Realignment:** The agent computes deviation vectors from the global map matrix and spins on its center axis to correct its alignment if the angle error exceeds 25 degrees.
+**Proportional Trajectory Error Realignment:** The agent computes deviation vectors from the global map matrix and spins on its center axis to correct its alignment if the angle error exceeds 25 degrees.
 
-###  **Tactile Sensor Fusion Handoff:** An onboard HC-SR04 ultrasonic sensor actively monitors local proximity. When an echo registers at 4 cm or less, the system interrupts the trajectory path and activates the servo-driven claw to secure the payload firmly.
+**Tactile Sensor Fusion Handoff:** An onboard HC-SR04 ultrasonic sensor actively monitors local proximity. When an echo registers at 4 cm or less, the system interrupts the trajectory path and activates the servo-driven claw to secure the payload firmly.
