@@ -50,4 +50,4 @@
 
 ### **Proportional Trajectory Error Realignment:** The agent computes deviation vectors from the global map matrix and spins on its center axis to correct its alignment if the angle error exceeds 25 degrees.
 
-###**Tactile Sensor Fusion Handoff:** An onboard HC-SR04 ultrasonic sensor actively monitors local proximity. When an echo registers at 4 cm or less, the system interrupts the trajectory path and activates the servo-driven claw to secure the payload firmly.
+###  **Tactile Sensor Fusion Handoff:** An onboard HC-SR04 ultrasonic sensor actively monitors local proximity. When an echo registers at 4 cm or less, the system interrupts the trajectory path and activates the servo-driven claw to secure the payload firmly.
