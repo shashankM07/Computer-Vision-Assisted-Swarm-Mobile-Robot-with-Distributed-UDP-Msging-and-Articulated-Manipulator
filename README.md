@@ -1,4 +1,4 @@
-#**Computer-Vision Assisted Swarm Mobile Robot Platform with Distributed UDP Messaging and Articulated Manipulator**
+#  **Computer-Vision Assisted Swarm Mobile Robot Platform with Distributed UDP Messaging and Articulated Manipulator**
 
 
   This repository contains the Phase 1 engineering implementation and design dossier for a computer-vision assisted, decentralized autonomous swarm robotics system optimized for automated warehouse material handling.
