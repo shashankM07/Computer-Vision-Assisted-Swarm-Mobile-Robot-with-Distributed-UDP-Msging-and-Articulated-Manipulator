@@ -8,13 +8,13 @@
 ## **System Architecture**
   The swarm relies on a shared global environment visualization state, enabling independent localization, path estimation, and conflict resolution without a master controller. The data flow loop consists of:
 
-### **Global Vision Acquisition**: An overhead digital video frame captures all physical movements within the arena.
+**Global Vision Acquisition**: An overhead digital video frame captures all physical movements within the arena.
 
-### **Digital Twin Synthesis**: A PyCharm station running OpenCV extracts ArUco matrix IDs, scaling real spatial markers into metric centimeters.
+**Digital Twin Synthesis**: A PyCharm station running OpenCV extracts ArUco matrix IDs, scaling real spatial markers into metric centimeters.
 
-### **Decentralized Network Broadcast**: The station packs the coordinate data into a unified JSON string and transmits it via a UDP broadcast.
+**Decentralized Network Broadcast**: The station packs the coordinate data into a unified JSON string and transmits it via a UDP broadcast.
 
-### **Edge Computation**: Onboard ESP32 microcontrollers process the incoming packet stream and execute local spatial trigonometry to drive the motor chassis.
+**Edge Computation**: Onboard ESP32 microcontrollers process the incoming packet stream and execute local spatial trigonometry to drive the motor chassis.
 
 ## **Python Digital Twin & Tracking Dashboard**
   The system's visual and calculation core operates inside a Python environment to transform raw image feeds into calibrated metric data loops.
