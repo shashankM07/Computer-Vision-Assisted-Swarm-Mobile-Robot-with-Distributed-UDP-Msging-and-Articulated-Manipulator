@@ -6,7 +6,7 @@
   Developed by the four-member team Swarmobotics and presented to the Department of Mechatronics Engineering, this project aims to counteract the fatal single point of failure common in centralized warehouse management systems by distributing intelligence across localized agents.
 
 ## **System Architecture**
-  The swarm relies on a shared global environment visualization state, enabling independent localization, path estimation, and conflict resolution without a master controller. The data flow loop consists of:
+### The swarm relies on a shared global environment visualization state, enabling independent localization, path estimation, and conflict resolution without a master controller. The data flow loop consists of:
 
 **Global Vision Acquisition**: An overhead digital video frame captures all physical movements within the arena.
 
