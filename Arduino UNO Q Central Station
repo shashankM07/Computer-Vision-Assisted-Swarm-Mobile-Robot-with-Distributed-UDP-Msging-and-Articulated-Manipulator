@@ -1,0 +1,31 @@
+# Arduino UNO Q: Central Vision & Command Station
+Overview
+The Arduino UNO Q serves as the standalone computational heart of the swarm's global localization system. By leveraging its hybrid architecture, this board completely replaces the need for an external laptop or PC during live deployments. It acts as the overarching "Vision Hub," capturing overhead video, processing spatial data, and dispatching coordinates to the decentralized swarm.
+
+Core Responsibilities
+Stream Ingestion: Continuously pulls the live MJPEG video feed from the overhead ESP32-CAM over the local Wi-Fi network.
+
+Spatial Processing: Runs a lightweight Debian Linux environment executing a dedicated Python and OpenCV pipeline to detect and track ArUco markers assigned to individual swarm agents.
+
+Coordinate Broadcasting: Calculates real-time X, Y, and orientation (Theta) data for each robot and broadcasts this telemetry globally via UDP packets.
+
+Hardware Architecture Utilization
+The Arduino UNO Q features a dual-processor architecture, optimized here to isolate heavy computation from real-time networking:
+
+Qualcomm Processor (Linux/Debian): Dedicated entirely to running the Python/OpenCV computer vision scripts. This side handles the heavy mathematical lifting of matrix transformations and image thresholding.
+
+STM32 Microcontroller: Reserved for potential low-latency peripheral expansion (e.g., physical emergency-stop buttons, status LED arrays, or localized hardware triggers) to keep the Linux core unburdened.
+
+Software Topology & The "No ROS 2" Design Choice
+To maintain the strict peer-to-peer, decentralized nature of the swarm (which operates via ESP-NOW), this central station intentionally bypasses heavy frameworks like ROS 2 or micro-ROS.
+
+Avoidance of Master-Slave: Implementing ROS 2 would inherently centralize the swarm's movement logic. Instead, the UNO Q acts purely as a macro-level sensor—it provides spatial awareness, not movement commands.
+
+UDP over TCP/ROS: Coordinate data is blasted over the network via connectionless UDP. Swarm agents (standard ESP32s) parse this UDP stream for their specific coordinates, but independently calculate their own collision avoidance and formation logic using local HC-SR04 ultrasonic sensors and ESP-NOW negotiation.
+
+Environment Setup Prerequisites
+OS: Debian Linux (flashed via Arduino infrastructure).
+
+Language: Python 3.x
+
+Dependencies: opencv-contrib-python (crucial for the ArUco dictionary modules), numpy, and socket (for UDP networking).
