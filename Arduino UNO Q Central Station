@@ -1,4 +1,4 @@
-# **Arduino UNO Q: Central Vision & Command Station**
+# Arduino UNO Q: Central Vision & Command Station
 Overview
 The Arduino UNO Q serves as the standalone computational heart of the swarm's global localization system. By leveraging its hybrid architecture, this board completely replaces the need for an external laptop or PC during live deployments. It acts as the overarching "Vision Hub," capturing overhead video, processing spatial data, and dispatching coordinates to the decentralized swarm.
 
