@@ -14,14 +14,14 @@ Decentralized Network Broadcast: The station packs the coordinate data into a li
 
 Edge Computation: Onboard ESP32 microcontrollers process the incoming packet stream, update dynamic target coordinates (e.g., Rack 4), and execute local spatial trigonometry to drive the 4WD motor chassis.
 
-Python Digital Twin & Tracking Dashboard
+## **Python Digital Twin & Tracking Dashboard**
 The system's visual and calculation core operates inside a Python environment to transform raw image feeds into calibrated metric data loops.
 
 Spatial Tracking & Targeting: Bridges the physical track to virtual frames, actively monitoring both the mobile agents (Bot 0) and dynamic destinations (Rack 4) to calculate relative distances.
 
 Dashboard Features: The script utilizes ArUco identification matrices, overlays live heading vectors and bounding boxes, draws a real-time targeting line between the bot and its destination, and delivers live UDP telemetry streams to the robotic agents.
 
-Mechanical Design & Structure
+## **Mechanical Design & Structure**
 The mobile agents feature a multi-tiered platform architecture manufactured from high-density lightweight acrylic polymer sheeting, which provides structural rigidity, electrical insulation, and vibration damping.
 
 Lower Deck (LD): The structural power platform housing the 7.4V Lithium-Ion battery, four high-current 12V 100RPM DC metal gear motors, and heavy-duty wheel assemblies for 4WD operation.
@@ -30,7 +30,7 @@ Upper Deck (UD): The digital acquisition deck containing the ESP32 microcontroll
 
 End-Effector Gripper: A custom gear-driven scissor linkage claw mechanism at the front of the bot, powered by an SG90 servo motor designed to sweep from a 180-degree initialization state to a 100-degree mechanical lock to safely grip packages.
 
-Electrical Architecture
+## **Electrical Architecture**
 The electrical control distribution isolates high-frequency data from internal circuit sags using a general-purpose copper perfboard panel.
 
 Core Hardware: Driven by a 30-pin ESP32 DevKit V1 module routed to a dual H-bridge TB6612FNG motor driver configuration to handle all four wheels synchronously.
@@ -41,7 +41,7 @@ VM (Motor Power): Tied directly to the unregulated 7.4V battery to handle high i
 
 VCC (Logic Power): Connected to the stable 3.3V/5V logic output to protect processing gates from motor interference, with the TB6612FNG STBY pins pulled high for continuous operation.
 
-Firmware & Operational Benchmarks
+## **Firmware & Operational Benchmarks**
 The edge processing firmware is written in C++ and runs locally on each ESP32 unit. The firmware establishes Wi-Fi/UDP connections, deserializes coordinate packets, and operates absolute trigonometry functions.
 
 During physical evaluations, the system has achieved the following performance benchmarks:
@@ -52,5 +52,5 @@ Dynamic Target Locking: The system successfully transitioned from hardcoded coor
 
 Proportional Trajectory Error Realignment: The agent computes deviation vectors using inverted Y-axis kinematics (accounting for OpenCV's top-left origin). It spins on its center axis to correct its alignment if the angle error exceeds 20 degrees, then drives synchronously toward the target.
 
-Next Steps (In Development)
+## **Next Steps (In Development)**
 Tactile Sensor Fusion Handoff: Integrating the onboard HC-SR04 ultrasonic sensor to actively monitor local proximity. When an echo registers at 4 cm or less from the targeted rack, the system will interrupt the visual trajectory path and activate the servo-driven claw to secure the payload.
