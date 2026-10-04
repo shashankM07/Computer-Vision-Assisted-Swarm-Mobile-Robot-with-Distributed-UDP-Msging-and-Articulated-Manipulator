@@ -8,7 +8,7 @@ The swarm relies on a shared global environment visualization state, enabling in
 
 **Global Vision Acquisition:** An overhead digital video frame captures all physical movements within the arena using an iPhone broadcasting via an HTTP IP Camera server.
 
-Digital Twin Synthesis: A PyCharm station running OpenCV extracts ArUco matrix IDs (DICT_4X4_250), calculating real-time spatial coordinates and directional headings for both robots and dynamic targets.
+### **Digital Twin Synthesis:** A PyCharm station running OpenCV extracts ArUco matrix IDs (DICT_4X4_250), calculating real-time spatial coordinates and directional headings for both robots and dynamic targets.
 
 Decentralized Network Broadcast: The station packs the coordinate data into a lightweight, comma-separated telemetry string (ID,X,Y,Angle) and transmits it via a UDP broadcast over a 2.4GHz hotspot bridge.
 
