@@ -1,4 +1,4 @@
-**Code for testing shoulder and elbow joints of the robotic arm**
+# **Code for testing shoulder and elbow joints of the robotic arm**
 
 #include <Wire.h>
 #include <Adafruit_PWMServoDriver.h>
